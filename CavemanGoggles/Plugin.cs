@@ -12,7 +12,7 @@ namespace CavemanGoggles
     [BepInPlugin(PluginGuid, PluginName, PluginVersion)]
     public partial class Plugin : BaseUnityPlugin
     {
-        private const string PluginGuid = "p1xel8ted.rootsofpacha.uiscales";
+        private const string PluginGuid = "p1xel8ted.rootsofpacha.cavemangoggles";
         private const string PluginName = "CavemanGoggles";
         private const string PluginVersion = "0.0.1";
 
