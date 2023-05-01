@@ -1,17 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Threading;
-using Cinemachine;
-using Cysharp.Threading.Tasks;
-using HarmonyLib;
-using SodaDen.Pacha;
-using SodaDen.Pacha.Audio;
+﻿using HarmonyLib;
 using SodaDen.Pacha.UI;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
-using UnityEngine.Playables;
-using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace CavemanGoggles
 {
