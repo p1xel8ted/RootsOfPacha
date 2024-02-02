@@ -7,23 +7,23 @@
   </PropertyGroup>
   
   <ItemGroup>
-    <Reference Include="Assembly-CSharp">
-      <HintPath>..\libs\Assembly-CSharp.dll</HintPath>
+    <Reference Include="Assembly-CSharp" publicize="true">
+      <HintPath>F:\Games\steamapps\common\Roots of Pacha\Roots of Pacha_Data\Managed\Assembly-CSharp.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine">
-      <HintPath>..\libs\UnityEngine.dll</HintPath>
+    <Reference Include="UnityEngine" publicize="true">
+      <HintPath>F:\Games\steamapps\common\Roots of Pacha\Roots of Pacha_Data\Managed\UnityEngine.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.CoreModule">
-      <HintPath>..\libs\UnityEngine.CoreModule.dll</HintPath>
+    <Reference Include="UnityEngine.CoreModule" publicize="true">
+      <HintPath>F:\Games\steamapps\common\Roots of Pacha\Roots of Pacha_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.IMGUIModule">
-      <HintPath>..\libs\UnityEngine.IMGUIModule.dll</HintPath>
+    <Reference Include="UnityEngine.IMGUIModule" publicize="true">
+      <HintPath>F:\Games\steamapps\common\Roots of Pacha\Roots of Pacha_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>..\libs\UnityEngine.UI.dll</HintPath>
+    <Reference Include="UnityEngine.UI" publicize="true">
+      <HintPath>F:\Games\steamapps\common\Roots of Pacha\Roots of Pacha_Data\Managed\UnityEngine.UI.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.UIModule">
-      <HintPath>..\libs\UnityEngine.UIModule.dll</HintPath>
+    <Reference Include="UnityEngine.UIModule" publicize="true">
+      <HintPath>F:\Games\steamapps\common\Roots of Pacha\Roots of Pacha_Data\Managed\UnityEngine.UIModule.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>
