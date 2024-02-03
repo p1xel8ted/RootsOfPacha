@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Reflection;
 using BepInEx;
 using BepInEx.Configuration;
@@ -24,61 +25,49 @@ namespace CavemanGoggles
         private static ActionHintsContainer ActionHintsContainer { get; set; }
         private static ClockContainer ClockContainer { get; set; }
         private static Canvas MasterCanvas { get; set; }
-        private static ManualLogSource LOG { get; set; }
+        private static ManualLogSource Log { get; set; }
 
-        private const string Mainscale = "Main Scale";
+        private const string MainScale = "Main Scale";
 
         private void Awake()
         {
-            LOG = new ManualLogSource(nameof(CavemanGoggles));
-            BepInEx.Logging.Logger.Sources.Add(LOG);
-
+            Log = Logger;
             ConfigFile = Config;
-
-            MasterCanvasScale = Config.Bind<float>(Mainscale, nameof(MasterCanvasScale), 4,
+            
+            MasterCanvasScale = Config.Bind<float>(MainScale, nameof(MasterCanvasScale), 4,
                 new ConfigDescription(
                     "This is the overall scale of most, if not the entire UI. Change this first, then set individually below.",
                     new AcceptableValueRange<float>(0, 10f), new ConfigurationManagerAttributes {Order = 4}));
             MasterCanvasScale.SettingChanged += OnScaleChanged;
 
-            QuickslotsContainerScale = Config.Bind<float>(Mainscale, nameof(QuickslotsContainerScale), 1,
+            QuickslotsContainerScale = Config.Bind<float>(MainScale, nameof(QuickslotsContainerScale), 1,
                 new ConfigDescription(
                     "The scale of the actionbar/quickslots at the bottom left of the screen.",
                     new AcceptableValueRange<float>(0, 10f), new ConfigurationManagerAttributes {Order = 3}));
             QuickslotsContainerScale.SettingChanged += OnScaleChanged;
 
-            ActionHintsContainerScale = Config.Bind<float>(Mainscale, nameof(ActionHintsContainerScale), 1,
+            ActionHintsContainerScale = Config.Bind<float>(MainScale, nameof(ActionHintsContainerScale), 1,
                 new ConfigDescription(
                     "The scale of the little menu at the bottom right of the screen.",
                     new AcceptableValueRange<float>(0, 10f), new ConfigurationManagerAttributes {Order = 2}));
             ActionHintsContainerScale.SettingChanged += OnScaleChanged;
 
-            ClockContainerScale = Config.Bind<float>(Mainscale, nameof(ClockContainerScale), 1,
+            ClockContainerScale = Config.Bind<float>(MainScale, nameof(ClockContainerScale), 1,
                 new ConfigDescription(
                     "The scale of clock section at the top right of the screen.",
                     new AcceptableValueRange<float>(0, 10f), new ConfigurationManagerAttributes {Order = 1}));
             ClockContainerScale.SettingChanged += OnScaleChanged;
 
 
-            Config.Bind(Mainscale, "Reset to Recommended", true,
+            Config.Bind(MainScale, "Reset to Recommended", true,
                 new ConfigDescription("Set scales to default.", null,
                     new ConfigurationManagerAttributes
                         {Order = 0, HideDefaultButton = true, CustomDrawer = ResetButtonDrawer}));
 
             Harmony.CreateAndPatchAll(Assembly.GetExecutingAssembly(), PluginGuid);
-            LOG.LogInfo($"Plugin {PluginName} is loaded!");
+            Log.LogInfo($"Plugin {PluginName} is loaded!");
         }
         
-        private void OnDestroy()
-        {
-            LOG.LogInfo($"{PluginName} has been destroyed!");
-        }
-
-        private void OnDisable()
-        {
-            LOG.LogInfo($"{PluginName} has been disabled!");
-        }
-
         private static bool _showConfirmationDialog;
 
         private static void DisplayConfirmationDialog()
@@ -132,7 +121,7 @@ namespace CavemanGoggles
             ConfigFile.Save();
         }
 
-        private static void OnScaleChanged(object sender, System.EventArgs e)
+        private static void OnScaleChanged(object sender, EventArgs e)
         {
             void OnScaleChangedUpdateScale(Transform transform, float scaleValue)
             {

@@ -12,7 +12,7 @@ namespace CavemanGoggles
     [HarmonyPatch]
     public partial class Plugin
     {
-        private static readonly Dictionary<Type, MonoBehaviour> UiComponentCache = new();
+        private readonly static Dictionary<Type, MonoBehaviour> UiComponentCache = new();
         private static ConfigFile ConfigFile { get; set; }
         private static int Count { get; set; }
 
@@ -30,7 +30,7 @@ namespace CavemanGoggles
 
                 if (uiTypes.Count <= 0)
                 {
-                    LOG.LogWarning("No UI Types Found!");
+                    Log.LogWarning("No UI Types Found!");
                     yield break;
                 }
 
